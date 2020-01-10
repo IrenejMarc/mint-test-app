@@ -5,6 +5,9 @@ component Layout {
   }
 
   style content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   fun render : Html {
