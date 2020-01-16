@@ -1,10 +1,10 @@
-component Pages.Login {
-  connect Forms.Login exposing { email, password, setEmail, setPassword, submit }
+component Pages.Register {
+  connect Forms.Register exposing { email, password, setEmail, setPassword, submit }
 
   fun render : Html {
     <form class="pure-form pure-form-stacked" onSubmit={submit}>
       <fieldset>
-        <legend>"Login"</legend>
+        <legend>"Register"</legend>
       </fieldset>
 
       <Input
@@ -23,7 +23,7 @@ component Pages.Login {
         onChange={setPassword}
       />
 
-      <input class="pure-button pure-button-primary" type="submit" value="Log in" />
+      <input class="pure-button pure-button-primary" type="submit" value="Register" />
     </form>
   }
 }

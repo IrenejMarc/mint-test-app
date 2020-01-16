@@ -1,19 +1,20 @@
 component Input {
   property type : String = "text"
   property label : String = ""
+  property value : String = ""
   property placeholder : String = ""
 
-  get value : String {
-    case (input) {
-      Maybe::Just element => Dom.getValue(element)
-      Maybe::Nothing      => ""
-    }
+  property onChange : Function(String, Promise(Never, Void)) =
+    (value : String) : Promise(Never, Void) { next {  } }
+
+  fun onInput(event : Html.Event) : Promise(Never, Void) {
+    onChange(Dom.getValue(event.target))
   }
 
   fun render : Html {
     <label>
       <{ label }>
-      <input as input type={type} placeholder={placeholder} />
+      <input type={type} placeholder={placeholder} onInput={onInput} />
     </label>
   }
 }

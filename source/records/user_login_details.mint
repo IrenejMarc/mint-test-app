@@ -1,4 +1,4 @@
-record LoginRecord {
+record UserLoginDetails {
   email : String,
   password : String
 }

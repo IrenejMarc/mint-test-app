@@ -5,7 +5,8 @@ component Main {
     <Layout>
       case (page) {
         Page::Login    => <Pages.Login />
-        Page::Register => <div />
+        Page::Register => <Pages.Register />
+        Page::Home     => <Pages.Home />
         Page::Root     => <Pages.Root />
       }
     </Layout>

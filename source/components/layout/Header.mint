@@ -1,4 +1,5 @@
 component Layout.Header {
+  connect Application exposing { userStatus }
   style right-menu {
     float: right;
   }
@@ -16,12 +17,23 @@ component Layout.Header {
           </ul>
 
           <ul::right-menu class="pure-menu-list">
-            <li class="pure-menu-item">
-              <Link href="/login" classNames="pure-menu-link">"Login"</Link>
-            </li>
-            <li class="pure-menu-item">
-              <Link href="/register" classNames="pure-menu-link">"Register"</Link>
-            </li>
+            <{
+              case (userStatus) {
+                UserStatus::LoggedIn user =>
+                  <li class="pure-menu-item">
+                    <Link href="/logout" classNames="pure-menu-link">"Log out"</Link>
+                  </li>
+                UserStatus::LoggedOut =>
+                  <>
+                    <li class="pure-menu-item">
+                      <Link href="/login" classNames="pure-menu-link">"Login"</Link>
+                    </li>
+                    <li class="pure-menu-item">
+                      <Link href="/register" classNames="pure-menu-link">"Register"</Link>
+                    </li>
+                  </>
+              }
+            }>
           </ul>
         </div>
       </div>
